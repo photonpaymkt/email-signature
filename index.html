@@ -96,7 +96,7 @@
                                 <!-- 左侧：姓名职位，占55%宽度 -->
                                 <td style="width: 55%; padding: 22px 0 22px 20px; vertical-align: middle;">
                                     <div id="sig-name" style="font-size: 21px; font-weight: 800; color: #7A4F00; line-height: 1.25; letter-spacing: 0.2px; margin: 0; padding: 0;">Katherine Huang</div>
-                                    <div id="sig-title" style="font-size: 13px; color: #9B6A00; margin-top: 5px; font-weight: 600; padding: 0;">Growth Marketing Specialist</div>
+                                    <div id="sig-title" style="font-size: 21px; color: #9B6A00; margin-top: 5px; font-weight: 600; padding: 0;">Growth Marketing Specialist</div>
                                 </td>
                                 <!-- 右侧：空白占位，胶囊已在背景图中 -->
                                 <td style="width: 45%; padding: 22px 24px 22px 0; vertical-align: middle;">
@@ -144,12 +144,12 @@
 
                                         <!-- 地址行 -->
                                         <tr>
-                                            <td style="width: 26px; vertical-align: top; padding-top: 2px;">
+                                            <td style="width: 26px; vertical-align: top; padding-top: 0;">
                                                 <img src="https://raw.githubusercontent.com/photonpaymkt/email-signature/main/Repositioning.png"
                                                      alt="location"
                                                      style="width: 22px; height: 22px; display: block; border: none;">
                                             </td>
-                                            <td id="sig-address" style="vertical-align: middle; padding-left: 8px; color: #374151; font-weight: 500; line-height: 1.55;">
+                                            <td id="sig-address" style="vertical-align: top; padding-left: 8px; color: #374151; font-weight: 500; line-height: 1.55;">
                                                 Units 1001-1002A, Tower 1, Century Metropolis, No. 1229 Century Avenue, Pudong New Area, Shanghai, China
                                             </td>
                                         </tr>
@@ -299,7 +299,7 @@
                 // Restore disclaimer
                 el.sigDisclaimer.style.display = '';
                 const base64 = canvas.toDataURL('image/png');
-                const combinedHtml = `<img src="${base64}" style="max-width:620px;display:block;border:none;margin:0;"><p style="border-top:1px solid #e5e7eb;padding-top:6px;margin:0;font-size:10.5px;color:#9ca3af;line-height:1.55;font-family:sans-serif;">本邮件包含保密信息，若您并非收件人，请删除本邮件并通知发件人。未经授权，禁止使用、复制或披露本邮件全部或部分内容。<br>This email may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Unauthorized use, disclosure, or copying of this email or any part of it is strictly prohibited.</p>`;
+                const combinedHtml = `<table cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;"><tr><td style="padding:0;line-height:0;font-size:0;"><img src="${base64}" style="max-width:620px;width:100%;display:block;border:none;margin:0;"></td></tr><tr><td style="border-top:1px solid #e5e7eb;padding-top:6px;font-size:10.5px;color:#9ca3af;line-height:1.55;font-family:sans-serif;">本邮件包含保密信息，若您并非收件人，请删除本邮件并通知发件人。未经授权，禁止使用、复制或披露本邮件全部或部分内容。<br>This email may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Unauthorized use, disclosure, or copying of this email or any part of it is strictly prohibited.</td></tr></table>`;
                 await navigator.clipboard.write([new ClipboardItem({
                     'text/html': new Blob([combinedHtml], { type: 'text/html' })
                 })]);
