@@ -113,48 +113,43 @@
                                          alt="PHOTONPAY"
                                          style="width: 148px; max-width: 148px; height: auto; display: block; border: none; margin: 0;">
                                 </td>
-
-                                <!-- 联系方式 -->
                                 <td style="width: 62%; text-align: left; vertical-align: top;">
-                                    <table cellpadding="0" cellspacing="0" border="0" style="width: 100%; font-size: 13px; color: #374151; line-height: 1.5; border-collapse: collapse;">
 
-                                        <!-- 电话行 -->
+                                    <table cellpadding="0" cellspacing="0" border="0" style="width: 100%; border-collapse: collapse;">
                                         <tr>
-                                            <td style="width: 26px; vertical-align: middle; padding-bottom: 9px;">
+                                            <td style="vertical-align: middle; padding-bottom: 9px; width: 30px;">
                                                 <img src="https://raw.githubusercontent.com/photonpaymkt/email-signature/main/Phone-call.png"
                                                      alt="phone"
-                                                     style="width: 22px; height: 22px; display: block; border: none;">
+                                                     style="display: block; width: 22px; height: 22px; border: none;">
                                             </td>
-                                            <td id="sig-phone-row" style="vertical-align: middle; padding-bottom: 9px; padding-left: 8px; color: #374151; font-weight: 500;">
+                                            <td id="sig-phone-row" style="vertical-align: middle; padding-bottom: 9px; font-size: 13px; line-height: 22px; color: #374151; font-weight: 500; font-family: -apple-system, BlinkMacSystemFont, sans-serif;">
                                                 +86 13751013735 | +852 5689 1234
                                             </td>
                                         </tr>
 
-                                        <!-- 官网行 -->
                                         <tr>
-                                            <td style="width: 26px; vertical-align: middle; padding-bottom: 9px;">
+                                            <td style="vertical-align: middle; padding-bottom: 9px; width: 30px;">
                                                 <img src="https://raw.githubusercontent.com/photonpaymkt/email-signature/main/Earth.png"
                                                      alt="web"
-                                                     style="width: 22px; height: 22px; display: block; border: none;">
+                                                     style="display: block; width: 22px; height: 22px; border: none;">
                                             </td>
-                                            <td style="vertical-align: middle; padding-bottom: 9px; padding-left: 8px;">
-                                                <a href="https://www.photonpay.com" target="_blank" style="color: #374151; text-decoration: none; font-weight: 500;">www.photonpay.com</a>
+                                            <td style="vertical-align: middle; padding-bottom: 9px; font-size: 13px; line-height: 22px; color: #374151; font-weight: 500; font-family: -apple-system, BlinkMacSystemFont, sans-serif;">
+                                                <a href="https://www.photonpay.com" target="_blank" style="color: #374151; text-decoration: none;">www.photonpay.com</a>
                                             </td>
                                         </tr>
 
-                                        <!-- 地址行 -->
                                         <tr>
-                                            <td style="width: 26px; vertical-align: top; padding-top: 0;">
+                                            <td style="vertical-align: top; padding-top: 1px; width: 30px;">
                                                 <img src="https://raw.githubusercontent.com/photonpaymkt/email-signature/main/Repositioning.png"
                                                      alt="location"
-                                                     style="width: 22px; height: 22px; display: block; border: none;">
+                                                     style="display: block; width: 22px; height: 22px; border: none;">
                                             </td>
-                                            <td id="sig-address" style="vertical-align: top; padding-left: 8px; color: #374151; font-weight: 500; line-height: 1.55;">
+                                            <td id="sig-address" style="vertical-align: top; font-size: 13px; line-height: 1.55; color: #374151; font-weight: 500; font-family: -apple-system, BlinkMacSystemFont, sans-serif;">
                                                 Units 1001-1002A, Tower 1, Century Metropolis, No. 1229 Century Avenue, Pudong New Area, Shanghai, China
                                             </td>
                                         </tr>
-
                                     </table>
+
                                 </td>
                             </tr>
                         </table>
@@ -268,41 +263,77 @@
                 triggerValidationError("请至少填写一个有效的联系手机号 (Mobile)", el.mobileContainer.querySelector('input'));
                 return;
             }
+
             el.copyBtnText.textContent = '生成中…';
             el.copyFeishuBtn.disabled = true;
+
             try {
-                // Hide disclaimer so only visual part is in the container
-                el.sigDisclaimer.style.display = 'none';
+                // 截图前，用标准 table 重写 sigVisual，确保对齐完全正确
+                el.sigVisual.innerHTML = `
+                    <table cellpadding="0" cellspacing="0" border="0" style="width: 100%; max-width: 620px; border-collapse: collapse; background: #ffffff;">
+                        <tr>
+                            <td colspan="2" style="padding-bottom: 20px;">
+                                <table cellpadding="0" cellspacing="0" border="0" style="width: 100%; border-collapse: separate; border-radius: 14px; overflow: hidden; background-image: url('https://raw.githubusercontent.com/photonpaymkt/email-signature/main/background.png'); background-size: cover; background-position: center;">
+                                    <tr>
+                                        <td style="width: 55%; padding: 22px 0 22px 20px; vertical-align: middle;">
+                                            <div style="font-size: 21px; font-weight: 800; color: #7A4F00; line-height: 1.25; font-family: -apple-system, sans-serif;">${el.nameInput.value.trim() || 'Katherine Huang'}</div>
+                                            <div style="font-size: 13px; color: #9B6A00; margin-top: 5px; font-weight: 600; font-family: -apple-system, sans-serif;">${el.titleInput.value.trim() || 'Growth Marketing Specialist'}</div>
+                                        </td>
+                                        <td style="width: 45%;"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 38%; text-align: left; vertical-align: top; padding-left: 4px; padding-right: 16px; padding-top: 2px;">
+                                <img src="https://raw.githubusercontent.com/photonpaymkt/email-signature/main/logo.png" alt="PHOTONPAY" style="width: 148px; max-width: 148px; height: auto; display: block; border: none; margin: 0;">
+                            </td>
+                            <td style="width: 62%; text-align: left; vertical-align: top; padding-top: 0;">
+                                <table cellpadding="0" cellspacing="0" border="0" style="width: 100%; border-collapse: collapse; margin-top: 0;">
+                                    <tr>
+                                        <td style="padding: 0 0 9px 0; white-space: nowrap; font-size: 0; line-height: 0;">
+                                            <img src="https://raw.githubusercontent.com/photonpaymkt/email-signature/main/Phone-call.png" alt="phone" style="display: inline-block; width: 22px; height: 22px; vertical-align: middle; border: none; margin: 0 8px 0 0;">
+                                            <span style="display: inline-block; vertical-align: middle; font-size: 13px; line-height: 1; color: #374151; font-weight: 500; font-family: -apple-system, sans-serif; margin-top: -10px;">${mobileNumbers.filter(num => num.trim() !== '').join(' | ') || '+86 13751013735 | +852 5689 1234'}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 0 0 9px 0; white-space: nowrap; font-size: 0; line-height: 0;">
+                                            <img src="https://raw.githubusercontent.com/photonpaymkt/email-signature/main/Earth.png" alt="web" style="display: inline-block; width: 22px; height: 22px; vertical-align: middle; border: none; margin: 0 8px 0 0;">
+                                            <span style="display: inline-block; vertical-align: middle; font-size: 13px; line-height: 1; color: #374151; font-weight: 500; font-family: -apple-system, sans-serif; margin-top: -10px;">www.photonpay.com</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 0; font-size: 0; line-height: 0;">
+                                            <img src="https://raw.githubusercontent.com/photonpaymkt/email-signature/main/Repositioning.png" alt="location" style="display: inline-block; width: 22px; height: 22px; vertical-align: top; border: none; margin: 0 8px 0 0;">
+                                            <span style="display: inline-block; vertical-align: top; font-size: 13px; line-height: 1.55; color: #374151; font-weight: 500; font-family: -apple-system, sans-serif; white-space: normal; max-width: calc(100% - 30px); margin-top: -6px;">${addressDictionary[el.citySelect.value] || addressDictionary["上海 Shanghai"]}</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr><td colspan="2" style="height: 12px;"></td></tr>
+                    </table>
+                `;
+
                 await new Promise(r => requestAnimationFrame(r));
 
-                // scrollHeight = full content height ignoring overflow clipping
-                const fullH = el.sigContainer.scrollHeight;
-                const fullW = el.sigContainer.scrollWidth;
-
-                const canvas = await html2canvas(el.sigContainer, {
+                const canvas = await html2canvas(el.sigVisual, {
                     scale: 2,
                     useCORS: true,
                     backgroundColor: '#ffffff',
                     logging: false,
-                    width: fullW,
-                    height: fullH,          // ← tell canvas the TRUE height upfront
-                    onclone: (clonedDoc) => {
-                        // Remove overflow clipping so all content renders
-                        clonedDoc.querySelectorAll('*').forEach(n => {
-                            if (n.style) { n.style.overflow = 'visible'; n.style.maxHeight = 'none'; }
-                        });
-                        const c = clonedDoc.getElementById('photonpay-final-signature');
-                        if (c) { c.style.width = fullW + 'px'; c.style.height = 'auto'; }
-                    }
+                    width: el.sigVisual.scrollWidth,
+                    height: el.sigVisual.scrollHeight
                 });
 
-                // Restore disclaimer
-                el.sigDisclaimer.style.display = '';
                 const base64 = canvas.toDataURL('image/png');
-                const combinedHtml = `<table cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;"><tr><td style="padding:0;line-height:0;font-size:0;"><img src="${base64}" style="max-width:620px;width:100%;display:block;border:none;margin:0;"></td></tr><tr><td style="border-top:1px solid #e5e7eb;padding-top:6px;font-size:10.5px;color:#9ca3af;line-height:1.55;font-family:sans-serif;">本邮件包含保密信息，若您并非收件人，请删除本邮件并通知发件人。未经授权，禁止使用、复制或披露本邮件全部或部分内容。<br>This email may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Unauthorized use, disclosure, or copying of this email or any part of it is strictly prohibited.</td></tr></table>`;
+
+                const combinedHtml = `<a href="https://www.photonpay.com/hk?utm_source=email" target="_blank" style="display:block;border:none;outline:none;text-decoration:none;"><img src="${base64}" style="max-width:620px;width:100%;display:block;border:none;margin:0;padding:0;" alt="PhotonPay Signature"></a><hr style="border:none;border-top:1px solid #e5e7eb;margin:6px 0 4px 0;padding:0;"><p style="font-size:10.5px;color:#9ca3af;line-height:1.6;font-family:sans-serif;margin:0;padding:0;">本邮件包含保密信息，若您并非收件人，请删除本邮件并通知发件人。未经授权，禁止使用、复制或披露本邮件全部或部分内容。<br>This email may contain confidential information. If you are not the intended recipient, please delete it and notify the sender. Unauthorized use, disclosure, or copying of this email or any part of it is strictly prohibited.</p>`;
+
                 await navigator.clipboard.write([new ClipboardItem({
                     'text/html': new Blob([combinedHtml], { type: 'text/html' })
                 })]);
+
                 el.copyBtnText.textContent = '✅ 已复制！';
                 el.successToast.style.opacity = '1';
                 setTimeout(() => {
@@ -312,9 +343,11 @@
                 }, 3500);
             } catch (err) {
                 console.error(err);
-                triggerValidationError('复制失败，请使用 Chrome / Edge 浏览器重试。');
+                triggerValidationError('复制失败，请使用 Chrome 或 Edge 浏览器重试。');
                 el.copyBtnText.textContent = '复制签名（粘贴到飞书）';
                 el.copyFeishuBtn.disabled = false;
+            } finally {
+                syncDataToPreview();
             }
         });
 
@@ -360,46 +393,10 @@
         el.sigTitle.textContent = el.titleInput.value.trim() || "Growth Marketing Specialist";
 
         let contactTokens = mobileNumbers.filter(num => num.trim() !== '');
-
-        el.sigPhoneRow.textContent = contactTokens.length > 0
-            ? contactTokens.join(' | ')
-            : "+86 13751013735 | +852 5689 1234";
+        el.sigPhoneRow.textContent = contactTokens.length > 0 ? contactTokens.join(' | ') : "+86 13751013735 | +852 5689 1234";
 
         const city = el.citySelect.value;
         el.sigAddress.textContent = addressDictionary[city] || addressDictionary["上海 Shanghai"];
-    }
-
-    async function executionRichCopy() {
-        el.errorBox.classList.add('hidden');
-        if (!el.nameInput.value.trim()) { triggerValidationError("请输入您的员工姓名 (Name)", el.nameInput); return; }
-        if (!el.titleInput.value.trim()) { triggerValidationError("请输入您的岗位职称 (Title)", el.titleInput); return; }
-        if (mobileNumbers.filter(n => n.trim()).length === 0) {
-            triggerValidationError("请至少填写一个有效的联系手机号 (Mobile)", el.mobileContainer.querySelector('input'));
-            return;
-        }
-
-        try {
-            const finalHtml = el.richSnippet.innerHTML;
-            const finalPlain = el.richSnippet.innerText;
-
-            if (navigator.clipboard && window.ClipboardItem) {
-                await navigator.clipboard.write([new ClipboardItem({
-                    'text/html': new Blob([finalHtml], { type: 'text/html' }),
-                    'text/plain': new Blob([finalPlain], { type: 'text/plain' })
-                })]);
-            } else {
-                const range = document.createRange();
-                range.selectNode(el.richSnippet);
-                window.getSelection().removeAllRanges();
-                window.getSelection().addRange(range);
-                document.execCommand('copy');
-                window.getSelection().removeAllRanges();
-            }
-            uiSuccessStateTransition();
-        } catch (err) {
-            console.error('富文本写入异常:', err);
-            triggerValidationError("复制失败，请在现代主流浏览器中重试。");
-        }
     }
 
     function triggerValidationError(message, focusElement = null) {
@@ -407,8 +404,6 @@
         el.errorBox.classList.remove('hidden');
         if (focusElement) { focusElement.scrollIntoView({ behavior: 'smooth', block: 'center' }); focusElement.focus(); }
     }
-
-    function uiSuccessStateTransition() {}
 
     window.addEventListener('DOMContentLoaded', initApplication);
 </script>
